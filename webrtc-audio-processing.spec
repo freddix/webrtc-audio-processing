@@ -1,7 +1,7 @@
 Summary:	WebRTC Audio Processing library
 Name:		webrtc-audio-processing
 Version:	0.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://freedesktop.org/software/pulseaudio/webrtc-audio-processing/%{name}-%{version}.tar.xz
@@ -49,6 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -64,7 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libwebrtc_audio_processing.so
-%{_libdir}/*.la
 %{_includedir}/webrtc_audio_processing
 %{_pkgconfigdir}/webrtc-audio-processing.pc
 
